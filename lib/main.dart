@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:messenger_app/conversations_list.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  runApp(const MainApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-);
+  );
+  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -14,13 +16,8 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      home: ConversationsListScreen(),
     );
-    
   }
 }
